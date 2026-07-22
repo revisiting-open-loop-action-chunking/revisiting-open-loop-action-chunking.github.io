@@ -1,0 +1,117 @@
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', Arial, sans-serif; color: #222; line-height: 1.6; }
+
+/* === SECTION LAYOUT ===
+   Each <section> gets 64px top/bottom padding and a centered 900px content column.
+   Odd sections (1st, 3rd, 5th…) are white; even sections are light gray. */
+.section { padding: 64px 20px; }
+.section-inner { max-width: 900px; margin: 0 auto; }
+section:nth-of-type(odd)  { background: #ffffff; }
+section:nth-of-type(even) { background: #F4F5F8; }
+
+/* === SECTION HEADING === */
+h1.section-title {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  color: #1a1a1a;
+}
+
+
+/* ==============================
+   HEADER BLOCK
+============================== */
+header { background: #fff; text-align: center; padding: 64px 20px 48px; }
+
+.paper-title {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #111;
+  max-width: 820px;
+  margin: 0 auto 28px;
+}
+
+/* --- Authors --- */
+.authors { font-size: 1.05rem; margin-bottom: 24px; color: #333; }
+.authors a { color: #333; text-decoration: none; }
+.authors a:hover { text-decoration: underline; }
+.corresponding { display: block; margin-top: 6px; font-size: 0.82rem; color: #999; }
+
+/* --- Institution logos --- */
+.affiliations {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 48px;
+  flex-wrap: wrap;
+  margin: 24px auto 32px;
+}
+.affiliation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 140px;
+}
+.affiliation .number { font-size: 0.85rem; font-weight: 600; color: #666; }
+.affiliation img    { height: 50px; width: auto; object-fit: contain; }
+.affiliation .name  { font-size: 0.78rem; color: #777; text-align: center; line-height: 1.4; }
+
+/* --- Link buttons --- */
+.links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.link-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  border: 1.5px solid #1f3b6f;
+  border-radius: 999px;
+  background: #1f3b6f;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.link-btn:hover { background: #162d55; border-color: #162d55; }
+
+/* --- BibTeX popup (shown when BibTeX button is clicked) --- */
+pre.bibtex {
+  text-align: left;
+  background: #eef0f5;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+
+/* ==============================
+   SECTION CONTENT STYLES
+============================== */
+
+/* Abstract body text */
+.abstract-text {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: #444;
+  text-align: justify;
+}
+
+/* Placeholder box for sections not yet filled in */
+.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 2px dashed #ccc;
+  border-radius: 10px;
+  color: #bbb;
+  font-size: 1rem;
+}
