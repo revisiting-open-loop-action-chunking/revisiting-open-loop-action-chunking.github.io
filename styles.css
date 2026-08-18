@@ -96,12 +96,58 @@ pre.bibtex {
    SECTION CONTENT STYLES
 ============================== */
 
+/* TL;DR callout */
+.tldr-box {
+  background: #eef2f8;
+  border-left: 4px solid #1f3b6f;
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+}
+.tldr-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1f3b6f;
+  margin-bottom: 8px;
+}
+.tldr-text {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #333;
+}
+.tldr-list {
+  margin: 0;
+  padding-left: 1.3em;
+}
+.tldr-list li + li {
+  margin-top: 8px;
+}
+
+/* --- Coming Soon --- */
+.coming-soon {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  padding: 40px 0;
+}
+
 /* Abstract body text */
 .abstract-text {
   font-size: 1rem;
   line-height: 1.9;
   color: #444;
   text-align: justify;
+}
+
+/* Local video player */
+.section-video {
+  display: block;
+  width: 100%;
+  max-height: 560px;
+  border-radius: 8px;
+  background: #000;
 }
 
 /* Placeholder box for sections not yet filled in */
