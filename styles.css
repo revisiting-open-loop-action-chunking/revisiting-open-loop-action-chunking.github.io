@@ -180,17 +180,27 @@ p.tldr-text {
 .tldr-video:hover::-webkit-media-controls-panel {
   opacity: 1;
 }
-.video-overlay-caption {
+.video-overlay-caption,
+.video-overlay-params {
   position: absolute;
-  top: 12px;
-  left: 12px;
   background: rgba(40, 40, 40, 0.75);
   color: #fff;
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.82rem;
   font-weight: 500;
+  line-height: 1.5;
   pointer-events: none;
+}
+.video-overlay-caption {
+  top: 12px;
+  left: 12px;
+  white-space: nowrap;
+}
+.video-overlay-params {
+  top: 12px;
+  right: 12px;
+  text-align: right;
 }
 .video-caption {
   text-align: center;

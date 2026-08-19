@@ -97,7 +97,7 @@
       <p class="tldr-text">Long open-loop execution horizons have become a de facto requirement in modern behavior cloning, despite sacrificing reactivity. We uncover why — and show how to move beyond it:</p>
       <ul class="tldr-text tldr-list">
         <li>Across benchmarks, we find <strong>long execution horizons primarily help short-context policies imitate non-Markovian experts</strong>.</li>
-        <li>We compare expert non-Markovianity with compounding errors and find that, while mitigating compounding errors is one key function of long execution horizons, <strong>expert non-Markovianity is stronger in practice</strong>.</li>
+        <li>We compare expert non-Markovianity with compounding errors and find that, while mitigating compounding errors is one key function of long execution horizons, <strong>capturing expert non-Markovianity is a stronger reason in practice</strong>.</li>
         <li>Giving policies more recent context removes dependence on long open-loop execution. This scales favorably with data — <strong>with enough data, long-context, reactive policies perform best</strong>.</li>
       </ul>
     </div>
@@ -106,11 +106,13 @@
     <div class="tldr-videos">
       <div class="tldr-video-wrap">
         <video id="pill-video" class="tldr-video" src="media/pill_best_To_8_Ta_2.mov" autoplay muted playsinline controls></video>
-        <span class="video-overlay-caption">Task: dispense a single pill from the bottle</span>
+        <span class="video-overlay-caption">Task: dispense a single pill</span>
+        <span class="video-overlay-params">🟠 execution horizon = 2<br>🔵 context length = 8</span>
       </div>
       <div class="tldr-video-wrap">
         <video id="baggie-video" class="tldr-video" src="media/baggie_best_To_8_Ta_2.mov" muted playsinline controls></video>
         <span class="video-overlay-caption">Task: insert paper slip into baggie</span>
+        <span class="video-overlay-params">🟠 execution horizon = 2<br>🔵 context length = 8</span>
       </div>
     </div>
     <p class="tldr-text tldr-question video-caption"><em>Are long-context, reactive policies a more performant paradigm for behavior cloning?</em></p>
