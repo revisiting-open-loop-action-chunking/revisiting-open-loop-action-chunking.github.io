@@ -1,3 +1,10 @@
+/* === TUNABLE SPACING VALUES === */
+:root {
+  --tldr-top-space: 0px;    /* space above the TL;DR box (SECTION 1) */
+  --tldr-side-space: 0px;   /* left/right padding around the TL;DR box */
+  --tldr-max-width: 1100px; /* width of the TL;DR box (increase to widen) */
+}
+
 /* === RESET & BASE === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Inter', Arial, sans-serif; color: #222; line-height: 1.6; }
@@ -5,7 +12,7 @@ body { font-family: 'Inter', Arial, sans-serif; color: #222; line-height: 1.6; }
 /* === SECTION LAYOUT ===
    Each <section> gets 64px top/bottom padding and a centered 900px content column.
    Odd sections (1st, 3rd, 5th…) are white; even sections are light gray. */
-.section { padding: 64px 20px; }
+.section { padding: 40px 20px 64px; }
 .section-inner { max-width: 900px; margin: 0 auto; }
 section:nth-of-type(odd)  { background: #ffffff; }
 section:nth-of-type(even) { background: #F4F5F8; }
@@ -13,7 +20,7 @@ section:nth-of-type(even) { background: #F4F5F8; }
 /* === SECTION HEADING === */
 h1.section-title {
   text-align: center;
-  font-size: 1.9rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 32px;
   color: #1a1a1a;
@@ -63,7 +70,9 @@ header { background: #fff; text-align: center; padding: 64px 20px 48px; }
 /* --- Link buttons --- */
 .links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
 .link-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   padding: 8px 22px;
   border: 1.5px solid #1f3b6f;
   border-radius: 999px;
@@ -76,6 +85,7 @@ header { background: #fff; text-align: center; padding: 64px 20px 48px; }
   cursor: pointer;
 }
 .link-btn:hover { background: #162d55; border-color: #162d55; }
+.link-btn i { font-size: 0.95em; margin-left: -3px; }
 
 /* --- BibTeX popup (shown when BibTeX button is clicked) --- */
 pre.bibtex {
@@ -96,6 +106,14 @@ pre.bibtex {
    SECTION CONTENT STYLES
 ============================== */
 
+/* TL;DR section spacing (tunable via --tldr-* vars at top of file) */
+.tldr-section {
+  padding-top: var(--tldr-top-space);
+  padding-left: var(--tldr-side-space);
+  padding-right: var(--tldr-side-space);
+}
+.tldr-section .section-inner { max-width: var(--tldr-max-width); }
+
 /* TL;DR callout */
 .tldr-box {
   background: #eef2f8;
@@ -104,7 +122,7 @@ pre.bibtex {
   padding: 20px 24px;
 }
 .tldr-label {
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -116,12 +134,94 @@ pre.bibtex {
   line-height: 1.7;
   color: #333;
 }
+p.tldr-text {
+  margin-bottom: 12px;
+}
 .tldr-list {
   margin: 0;
   padding-left: 1.3em;
+  font-size: 1.0rem;
 }
 .tldr-list li + li {
   margin-top: 8px;
+}
+.tldr-question {
+  margin-top: 14px;
+  color: #1f3b6f;
+  font-weight: 600;
+}
+
+/* TL;DR demo videos */
+.tldr-videos {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+.tldr-video-wrap {
+  position: relative;
+  flex: 1 1 300px;
+  min-width: 240px;
+  aspect-ratio: 1828 / 1080; /* matches the pill video; baggie is cropped to fit via object-fit */
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.tldr-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.tldr-video::-webkit-media-controls-panel {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.tldr-video:hover::-webkit-media-controls-panel {
+  opacity: 1;
+}
+.video-overlay-caption {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(40, 40, 40, 0.75);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  pointer-events: none;
+}
+.video-caption {
+  text-align: center;
+  font-size: 1.1rem;
+}
+.video-caption em {
+  font-style: normal;
+  display: inline-block;
+  transform: skewX(-8deg);
+}
+
+/* --- "Read the paper" CTA --- */
+.cta-section { padding-top: 24px; padding-bottom: 24px; }
+.cta-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+.cta-text {
+  font-size: 1.35rem;
+  font-weight: 600;
+  /* color: #1a1a1a; */
+  color: #FF0000;
+  text-decoration: underline;
+  text-align: center;
+}
+.cta-btn {
+  font-size: 1rem;
+  padding: 10px 28px;
+  margin-bottom: 10px;
 }
 
 /* --- Coming Soon --- */
@@ -135,16 +235,21 @@ pre.bibtex {
 
 /* Abstract body text */
 .abstract-text {
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1.9;
-  color: #444;
+  width: 85%;
+  margin: -20px auto 0;
+  color: #000000;
   text-align: justify;
 }
 
 /* Local video player */
 .section-video {
   display: block;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: -20px;
+  margin-bottom: -10px;
   max-height: 560px;
   border-radius: 8px;
   background: #000;

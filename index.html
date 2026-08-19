@@ -6,6 +6,8 @@
   <title>Revisiting Open-Loop Execution in Robotics</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -62,15 +64,15 @@
 
   <!-- ─── LINKS ─── -->
   <div class="links">
-    <a class="link-btn" href="https://arxiv.org/abs/2608.15938" target="_blank" rel="noopener noreferrer">arXiv</a>
-    <a class="link-btn" href="https://arxiv.org/pdf/2608.15938" target="_blank" rel="noopener noreferrer">PDF</a>
-    <a class="link-btn" href="https://github.com/Michaelszeng/Revisiting-Open-Loop-Execution-in-Robotics" target="_blank" rel="noopener noreferrer">Code</a>
+    <a class="link-btn" href="https://arxiv.org/abs/2608.15938" target="_blank" rel="noopener noreferrer"><i class="ai ai-arxiv"></i>arXiv</a>
+    <a class="link-btn" href="https://arxiv.org/pdf/2608.15938" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i>PDF</a>
+    <a class="link-btn" href="https://github.com/Michaelszeng/Revisiting-Open-Loop-Execution-in-Robotics" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i>Code</a>
     <!-- BibTeX button toggles the block below -->
     <a class="link-btn" href="#"
        onclick="event.preventDefault();
                 var b = document.getElementById('header-bibtex');
                 b.style.display = b.style.display === 'block' ? 'none' : 'block'">
-      BibTeX
+      <i class="fa-solid fa-quote-right"></i>BibTeX
     </a>
   </div>
 
@@ -86,14 +88,96 @@
 
 
 <!-- ██████████████████████████████████████████████████████████
-     SECTION — Abstract                          [white bg]
+     SECTION 1 — TLDR                            [white bg]
+     ██████████████████████████████████████████████████████████ -->
+<section class="section tldr-section">
+  <div class="section-inner">
+    <div class="tldr-box">
+      <div class="tldr-label">TL;DR</div>
+      <p class="tldr-text">Long open-loop execution horizons have become a de facto requirement in modern behavior cloning, despite sacrificing reactivity. We uncover why — and show how to move beyond it:</p>
+      <ul class="tldr-text tldr-list">
+        <li>Across benchmarks, we find <strong>long execution horizons primarily help short-context policies imitate non-Markovian experts</strong>.</li>
+        <li>We compare expert non-Markovianity with compounding errors and find that, while mitigating compounding errors is one key function of long execution horizons, <strong>expert non-Markovianity is stronger in practice</strong>.</li>
+        <li>Giving policies more recent context removes dependence on long open-loop execution. This scales favorably with data — <strong>with enough data, long-context, reactive policies perform best</strong>.</li>
+      </ul>
+    </div>
+
+    <!-- ─── TLDR demo videos: pill clip plays, then baggie clip ─── -->
+    <div class="tldr-videos">
+      <div class="tldr-video-wrap">
+        <video id="pill-video" class="tldr-video" src="media/pill_best_To_8_Ta_2.mov" autoplay muted playsinline controls></video>
+        <span class="video-overlay-caption">Task: dispense a single pill from the bottle</span>
+      </div>
+      <div class="tldr-video-wrap">
+        <video id="baggie-video" class="tldr-video" src="media/baggie_best_To_8_Ta_2.mov" muted playsinline controls></video>
+        <span class="video-overlay-caption">Task: insert paper slip into baggie</span>
+      </div>
+    </div>
+    <p class="tldr-text tldr-question video-caption"><em>Are long-context, reactive policies a more performant paradigm for behavior cloning?</em></p>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var pill = document.getElementById('pill-video');
+    var baggie = document.getElementById('baggie-video');
+    pill.addEventListener('ended', function () {
+      baggie.currentTime = 0;
+      baggie.play();
+    });
+    baggie.addEventListener('ended', function () {
+      pill.currentTime = 0;
+      pill.play();
+    });
+  })();
+</script>
+
+
+<!-- ██████████████████████████████████████████████████████████
+     SECTION 2 — Video                           [gray bg]
+     ██████████████████████████████████████████████████████████ -->
+<section class="section">
+  <div class="section-inner">
+    <h1 class="section-title">Teaser Video</h1>
+    <video class="section-video" controls playsinline preload="metadata">
+      <source src="C:\Users\micha\OneDrive\Documents\UROP - RLG - GCS\Action Chunking Project Video\v3.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
+
+
+
+<section class="section cta-section">
+  <div class="section-inner cta-inner">
+    <p class="cta-text">Please read the paper for more!</p>
+    <a class="link-btn cta-btn" href="https://arxiv.org/abs/2608.15938" target="_blank" rel="noopener noreferrer"><i class="ai ai-arxiv"></i>arXiv</a>
+  </div>
+</section>
+
+
+<!--
+██████████████████████████████████████████████████████████
+     SECTION 4 — Results                         [gray bg]
+     ██████████████████████████████████████████████████████████
+<section class="section">
+  <div class="section-inner">
+    <h1 class="section-title">Results</h1>
+    <div class="placeholder">[ Result tables, plots, or comparison figures ]</div>
+  </div>
+</section>
+-->
+
+
+<!-- ██████████████████████████████████████████████████████████
+     SECTION 5 — Abstract                        [white bg]
      ██████████████████████████████████████████████████████████ -->
 <section class="section">
   <div class="section-inner">
     <h1 class="section-title">Abstract</h1>
     <p class="abstract-text">
-      Action Chunking—the practice of predicting a sequence of actions and executing a prefix
-      open-loop—has emerged as a key enabler of recent progress in imitation learning for robotic
+      Action Chunking — the practice of predicting a sequence of actions and executing a prefix
+      open-loop — has emerged as a key enabler of recent progress in imitation learning for robotic
       manipulation. A growing body of work has sought to understand why action chunking appears so
       effective, citing mitigating compounding errors, absorbing inference latency, increasing action
       smoothness, or consequences of partial observability such as mode switching or idling. We unify
@@ -108,65 +192,6 @@
     </p>
   </div>
 </section>
-
-
-<!-- ██████████████████████████████████████████████████████████
-     SECTION — Coming Soon                       [gray bg]
-     ██████████████████████████████████████████████████████████ -->
-<section class="section">
-  <div class="section-inner">
-    <div class="coming-soon">🚧 Coming Soon! 🚧</div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════════════════════════
-     TEMPORARILY DISABLED — restore when ready
-
-     SECTION 1 — TLDR                            [white bg]
-<section class="section">
-  <div class="section-inner">
-    <div class="tldr-box">
-      <div class="tldr-label">TL;DR</div>
-      <p class="tldr-text">Long open-loop execution horizons have become a de facto requirement in modern behavior cloning, despite sacrificing reactivity. In this work, we ask why:</p>
-      <ul class="tldr-text tldr-list">
-        <li>We find long execution horizons primarily compensate for policies' short context length when imitating non-Markovian experts.</li>
-        <li>We investigate the role of compounding errors and find that, </li>
-        <li>Increasing context length removes dependence on long open-loop execution. With sufficient context, the most reactive policies become optimal or near-optimal.</li>
-        <li>Long-context, reactive policies present a more performant paradigm for robotic manipulation.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-     SECTION 2 — Video                           [gray bg]
-<section class="section">
-  <div class="section-inner">
-    <h1 class="section-title">Video</h1>
-    <video class="section-video" controls playsinline preload="metadata">
-      <source src="media/video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-inner">
-    <h1 class="section-title">Why Policies Fail without Long Execution Horizons</h1>
-    <div class="placeholder">[ Figures, diagrams, or text describing key findings ]</div>
-  </div>
-</section>
-
-     SECTION 4 — Results                         [gray bg]
-<section class="section">
-  <div class="section-inner">
-    <h1 class="section-title">Results</h1>
-    <div class="placeholder">[ Result tables, plots, or comparison figures ]</div>
-  </div>
-</section>
-
-     END TEMPORARILY DISABLED
-     ══════════════════════════════════════════════════════════ -->
 
 
 <!-- ██████████████████████████████████████████████████████████
